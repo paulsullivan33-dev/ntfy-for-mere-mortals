@@ -1,0 +1,4 @@
+$ curl -s -d "Backup finished" http://127.0.0.1:8099/lab-alerts
+{"id":"4ygK7OOqgGJu","time":1792610682,"expires":1792653882,"event":"message","topic":"lab-alerts","message":"Backup finished"}
+$ curl -s -X PUT -d "Door sensor tripped" http://127.0.0.1:8099/lab-alerts
+{"id":"SMGFlQuc9OWj","time":1792610682,"expires":1792653882,"event":"message","topic":"lab-alerts","message":"Door sensor tripped"}

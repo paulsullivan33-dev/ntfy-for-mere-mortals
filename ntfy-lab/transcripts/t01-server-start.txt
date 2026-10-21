@@ -1,0 +1,17 @@
+$ ntfy serve --config server.yml
+2026/10/21 19:32:22 INFO Listening on 127.0.0.1:8099[http], ntfy 2.32.0, log level is INFO (tag=startup)
+$ curl -s http://127.0.0.1:8099/v1/health
+{"healthy":true,"role":"active"}
+
+$ curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:8099/
+200
+--- server.yml (the lab config; auth-default-access was later switched to deny-all for chapter 9) ---
+# Lab server config for "ntfy for Mere Mortals" (build copy).
+# The repo's examples/server.yml carries the same settings with
+# paths relative to the examples folder.
+base-url: "http://127.0.0.1:8099"
+listen-http: "127.0.0.1:8099"
+cache-file: "/home/hatch/workspace/ntfy-build/data/cache.db"
+attachment-cache-dir: "/home/hatch/workspace/ntfy-build/data/attachments"
+auth-file: "/home/hatch/workspace/ntfy-build/data/auth.db"
+auth-default-access: "deny-all"

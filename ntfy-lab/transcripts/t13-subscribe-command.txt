@@ -1,0 +1,4 @@
+$ ntfy subscribe --user alice:alice-lab-pass http://127.0.0.1:8099/lab-private 'echo "GOT: [$priority] $title - $message"'
+$ curl -s -u alice:alice-lab-pass -H "X-Title: Sensor" -H "X-Priority: 4" -d "Door opened" http://127.0.0.1:8099/lab-private
+--- what the subscribe command printed ---
+GOT: [4] Sensor - Door opened

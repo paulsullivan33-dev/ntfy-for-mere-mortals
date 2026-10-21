@@ -1,0 +1,4 @@
+$ curl -s -u alice:alice-lab-pass -H "X-Markdown: true" -d "**Bold** news about the build" http://127.0.0.1:8099/lab-private
+{"id":"40TjEe61KVnn","time":1792611234,"expires":1792654434,"event":"message","topic":"lab-private","message":"**Bold** news about the build","content_type":"text/markdown"}
+$ curl -s -u alice:alice-lab-pass -H "X-Actions: view, Open the build log, https://example.org/builds/412" -d "Build 412 finished" http://127.0.0.1:8099/lab-private
+{"id":"GEJbnd0AJyAX","time":1792611235,"expires":1792654435,"event":"message","topic":"lab-private","message":"Build 412 finished","actions":[{"id":"Fpl57zmrfW","action":"view","label":"Open the build log","clear":false,"url":"https://example.org/builds/412"}]}

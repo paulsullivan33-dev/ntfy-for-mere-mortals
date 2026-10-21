@@ -1,0 +1,13 @@
+$ curl -s "http://127.0.0.1:8099/lab-alerts/json?poll=1" | head -3
+{"id":"4ygK7OOqgGJu","time":1792610682,"expires":1792653882,"event":"message","topic":"lab-alerts","message":"Backup finished"}
+{"id":"SMGFlQuc9OWj","time":1792610682,"expires":1792653882,"event":"message","topic":"lab-alerts","message":"Door sensor tripped"}
+{"id":"f8ufxERBPiyw","time":1792610695,"expires":1792653895,"event":"message","topic":"lab-alerts","message":"Backup finished"}
+[... 12 messages in the cache at this point]
+$ curl -s "http://127.0.0.1:8099/lab-alerts/json?poll=1&since=1m"
+{"id":"KOGXodj8Oxri","time":1792610733,"expires":1792653933,"event":"message","topic":"lab-alerts","message":"A message for the live subscriber"}
+{"id":"2PfzMHKR4uvp","time":1792610740,"expires":1792653940,"event":"message","topic":"lab-alerts","message":"A message for the HTTP stream"}
+{"id":"YZZ5SQjpqd2i","time":1792610743,"expires":1792653943,"event":"message","topic":"lab-alerts","message":"A message for the SSE stream"}
+{"id":"vBdhKjVjH6ZM","time":1792610761,"expires":1792653961,"event":"message","topic":"lab-alerts","message":"A message for the HTTP stream"}
+{"id":"MTtUHLNTFxlY","time":1792610791,"expires":1792653991,"event":"message","topic":"lab-alerts","message":"Fresh marker message"}
+$ curl -s "http://127.0.0.1:8099/lab-alerts/json?poll=1&since=MTtUHLNTFxlY"
+[no output: nothing has been published after that message yet]

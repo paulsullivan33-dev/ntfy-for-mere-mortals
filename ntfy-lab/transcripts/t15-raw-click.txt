@@ -1,0 +1,5 @@
+$ curl -s -u alice:alice-lab-pass -H "X-Click: https://example.org/builds/412" -d "Build finished, tap for the log" http://127.0.0.1:8099/lab-private
+{"id":"Nie5iWb2Nlo0","time":1792611407,"expires":1792654607,"event":"message","topic":"lab-private","message":"Build finished, tap for the log","click":"https://example.org/builds/412"}
+$ curl -sN -u bob:bob-lab-pass http://127.0.0.1:8099/lab-private/raw   (held open; the publish above arrives)
+
+Build finished, tap for the log

@@ -1,0 +1,67 @@
+The lab — what the local server is
+=====================================================================
+
+The lab is a server, not a file. One ntfy
+process, run on your own machine from this
+folder:
+
+    sh lab-server.sh
+
+It reads server.yml beside the script and
+listens on 127.0.0.1, port 8099 — this machine
+only, not the network. Nothing in the guide
+needs an account, a phone, or the public
+ntfy.sh server; everything is practised
+here first, where a mistake can reach
+exactly one computer.
+
+State lives in ntfy-data/ next to the
+config, created by lab-server.sh on first
+run:
+
+    cache.db        the message cache
+                    (chapter 5): messages,
+                    kept 12 hours by default
+    attachments/    uploaded files (chapter 6),
+                    kept 3 hours by default
+    auth.db         the user database
+                    (chapter 8)
+
+Delete ntfy-data/ and the lab forgets
+everything: every cached message, every
+user. The chapters never ask you to.
+
+The cast
+----------------------------------
+    lab-alerts      the open topic of chapters
+                    2–7. While the lab config
+                    says read-write, anyone
+                    who can reach the server
+                    can use it — which, on
+                    127.0.0.1, is only you.
+    lab-private     the protected topic of
+                    chapter 8, created simply
+                    by being published to
+                    once access control is on.
+    alice           a user with read-write
+                    access to lab-private.
+    bob             a user with read-only
+                    access to lab-private: he
+                    may listen, never publish.
+
+Both users and their passwords
+(alice-lab-pass, bob-lab-pass) are invented
+lab fixtures for a throwaway server on a
+loopback address. They are printed in
+chapter 8 because the captures need them;
+they protect nothing and must never be
+used anywhere else.
+
+Things the guide asks you to change
+----------------------------------
+    server.yml      chapter 8 edits one line —
+                    auth-default-access becomes
+                    "deny-all" — and restarts
+                    the server. That restart is
+                    the moment the open lab
+                    becomes a locked one.

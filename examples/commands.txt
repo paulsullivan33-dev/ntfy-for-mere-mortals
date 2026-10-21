@@ -1,0 +1,86 @@
+ntfy commands — the everyday set from
+"ntfy for Mere Mortals"
+=====================================================================
+
+Every output quoted in the guide was captured
+from ntfy 2.32.0 against the lab server in
+this folder (see lab-notes.txt). The server
+in the captures is http://127.0.0.1:8099;
+substitute your own server's address.
+
+
+PUBLISH (chapter 2)
+--------------------
+    curl -d "Backup finished" $SERVER/lab-alerts
+    curl -X PUT -d "Door sensor tripped" $SERVER/lab-alerts
+
+    ntfy publish $SERVER/lab-alerts "Backup finished"
+    ntfy publish --title "Nightly build" \
+        --priority high --tags white_check_mark,computer \
+        $SERVER/lab-alerts "Build 412 passed"
+
+
+ANATOMY (chapter 3)
+--------------------
+    -H "X-Title: ..."        the bold first line
+    -H "X-Priority: 5"       1 min, 2 low, 3 default,
+                             4 high, 5 max (names work too)
+    -H "X-Tags: warning"     comma-separated; some
+                             tags render as emoji on phones
+    -H "X-Markdown: true"    message is Markdown
+    -H "X-Click: https://…"  where a tap takes you
+    -H "X-Actions: view, Label, https://…"
+                             an action button
+
+
+SUBSCRIBE (chapter 4)
+--------------------
+    ntfy subscribe $SERVER/lab-alerts
+    curl -sN $SERVER/lab-alerts/json     a stream of JSON lines
+    curl -sN $SERVER/lab-alerts/sse      the same, SSE-shaped
+    curl -s  $SERVER/lab-alerts/raw      message text only
+
+    ntfy subscribe $SERVER/lab-alerts 'echo "$message"'
+                             run a command per message;
+                             $id $time $topic $title
+                             $message $priority $tags
+
+
+CATCH UP (chapter 5)
+--------------------
+    curl -s "$SERVER/lab-alerts/json?poll=1"
+                             everything cached, then close
+    curl -s "$SERVER/lab-alerts/json?poll=1&since=10m"
+    curl -s "$SERVER/lab-alerts/json?poll=1&since=<id>"
+                             since takes a duration or a
+                             message ID (both run in ch. 5);
+                             a timestamp form is documented
+    ntfy subscribe --poll $SERVER/lab-alerts
+
+
+DELAYS AND ATTACHMENTS (chapter 6)
+--------------------
+    -H "X-Delay: 15s"        deliver later (10s to 3d);
+                             "tomorrow, 10am" works too
+    curl -T report.txt -H "X-Filename: report.txt" \
+        -H "X-Message: The weekly report is attached" \
+        $SERVER/lab-alerts   upload a file with the message
+    -H "X-Attach: https://…" let the server fetch a file
+                             from a URL instead
+                             (documented; not run in the lab)
+
+
+SERVER (chapters 1, 7)
+--------------------
+    ntfy serve --config server.yml
+    curl -s $SERVER/v1/health
+
+
+USERS AND ACCESS (chapter 8)
+--------------------
+    NTFY_CONFIG_FILE=server.yml ntfy user add alice
+    NTFY_CONFIG_FILE=server.yml ntfy user list
+    ntfy access alice lab-private read-write
+    ntfy access bob lab-private read-only
+    ntfy access              show every grant
+    curl -u alice:... -d "..." $SERVER/lab-private

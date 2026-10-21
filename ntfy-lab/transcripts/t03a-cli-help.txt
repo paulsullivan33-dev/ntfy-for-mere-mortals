@@ -1,0 +1,31 @@
+$ ntfy publish --help (excerpt)
+NAME:
+   ntfy publish - Send message via a ntfy server
+
+USAGE:
+   ntfy publish [OPTIONS..] TOPIC [MESSAGE...]
+   ntfy publish [OPTIONS..] --wait-cmd COMMAND...
+   NTFY_TOPIC=.. ntfy publish [OPTIONS..] [MESSAGE...]
+
+CATEGORY:
+   Client commands
+
+DESCRIPTION:
+   Publish a message to a ntfy server.
+
+   Examples:
+     ntfy publish mytopic This is my message                 # Send simple message
+     ntfy send myserver.com/mytopic "This is my message"     # Send message to different default host
+     ntfy pub -p high backups "Backups failed"               # Send high priority message
+     ntfy pub --tags=warning,skull backups "Backups failed"  # Add tags/emojis to message
+     ntfy pub --delay=10s delayed_topic Laterzz              # Delay message by 10s
+     ntfy pub --at=8:30am delayed_topic Laterzz              # Send message at 8:30am
+     ntfy pub -e phil@example.com alerts 'App is down!'      # Also send email to phil@example.com
+     ntfy pub --click="https://reddit.com" redd 'New msg'    # Opens Reddit when notification is clicked
+     ntfy pub --icon="http://some.tld/icon.png" 'Icon!'      # Send notification with custom icon
+     ntfy pub --attach="http://some.tld/file.zip" files      # Send ZIP archive from URL as attachment
+     ntfy pub --file=flower.jpg flowers 'Nice!'              # Send image.jpg as attachment
+     ntfy pub -S my-id mytopic 'Update me'                   # Send with sequence ID for updates
+     echo 'message' | ntfy publish mytopic                   # Send message from stdin
+     ntfy pub -u phil:mypass secret Psst                     # Publish with username/password
+     ntfy pub --wait-pid 1234 mytopic                        # Wait for process 1234 to exit before publishing

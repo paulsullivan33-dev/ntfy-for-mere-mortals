@@ -1,0 +1,27 @@
+# The lab server config for "ntfy for Mere Mortals".
+# Start it with lab-server.sh from this folder, or with:
+#   ntfy serve --config server.yml
+# Paths are relative to the folder the server is
+# started from, so the lab's data stays in ntfy-data/
+# beside this file.
+
+base-url: "http://127.0.0.1:8099"
+listen-http: "127.0.0.1:8099"
+
+# Messages are cached on disk so subscribers can
+# catch up (chapter 5). Default lifetime is 12h.
+cache-file: "ntfy-data/cache.db"
+
+# Uploaded attachments are stored here (chapter 6).
+attachment-cache-dir: "ntfy-data/attachments"
+
+# The user database for chapter 8. While
+# auth-default-access is "read-write", the server
+# is open like the public one: anyone who can
+# reach it can publish and subscribe.
+auth-file: "ntfy-data/auth.db"
+auth-default-access: "read-write"
+
+# Chapter 8 changes the line above to "deny-all"
+# and restarts the server. From then on, only
+# granted users can do anything.

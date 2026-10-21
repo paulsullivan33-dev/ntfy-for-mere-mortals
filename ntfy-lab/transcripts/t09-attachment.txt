@@ -1,0 +1,11 @@
+$ printf "Weekly report..." > report.txt; wc -c report.txt
+67 report.txt
+$ curl -s -T report.txt -H "X-Filename: report.txt" -H "X-Message: The weekly report is attached" http://127.0.0.1:8099/lab-alerts
+{"id":"z2qMRPB7pgFB","time":1792610913,"expires":1792654113,"event":"message","topic":"lab-alerts","message":"The weekly report is attached","attachment":{"name":"report.txt","type":"text/plain; charset=utf-8","size":67,"expires":1792621713,"url":"http://127.0.0.1:8099/file/z2qMRPB7pgFB.txt"}}
+$ curl -s http://127.0.0.1:8099/file/z2qMRPB7pgFB.txt
+Weekly report
+==============
+Backups: ok
+Builds: 1 failed, see log
+$ cmp report.txt downloaded.txt && echo IDENTICAL
+IDENTICAL

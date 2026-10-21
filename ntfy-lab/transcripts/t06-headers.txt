@@ -1,0 +1,10 @@
+$ curl -s -H "X-Title: Backup report" -H "X-Priority: 5" -H "X-Tags: floppy_disk,warning" -d "Backup finished with 2 warnings" http://127.0.0.1:8099/lab-alerts
+{"id":"0p2AwjzCO2Lx","time":1792610711,"expires":1792653911,"event":"message","topic":"lab-alerts","title":"Backup report","message":"Backup finished with 2 warnings","priority":5,"tags":["floppy_disk","warning"]}
+$ curl -s -H "X-Priority: min" -d "A very quiet message" http://127.0.0.1:8099/lab-alerts
+{"id":"yZCCRalf91Kj","time":1792610711,"expires":1792653911,"event":"message","topic":"lab-alerts","message":"A very quiet message","priority":1}
+$ curl -s -H "X-Priority: 2" -d "Low priority example" http://127.0.0.1:8099/lab-alerts
+{"id":"MXZ1HC9QmPLo","time":1792610711,"expires":1792653911,"event":"message","topic":"lab-alerts","message":"Low priority example","priority":2}
+$ curl -s -w "\nHTTP %{http_code}\n" -H "X-Priority: 9" -d "Priority nine" http://127.0.0.1:8099/lab-alerts
+{"code":40007,"http":400,"error":"invalid priority parameter","link":"https://ntfy.sh/docs/publish/#message-priority"}
+
+HTTP 400

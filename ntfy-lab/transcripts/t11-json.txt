@@ -1,0 +1,3 @@
+$ curl -s -u alice:alice-lab-pass -d '{"topic": "lab-private", "title": "From JSON", "message": "A short JSON message", "priority": 2, "tags": ["test"]}' http://127.0.0.1:8099/
+{"id":"RNjDBeaWzwcV","time":1792611228,"expires":1792654428,"event":"message","topic":"lab-private","title":"From JSON","message":"A short JSON message","priority":2,"tags":["test"]}
+

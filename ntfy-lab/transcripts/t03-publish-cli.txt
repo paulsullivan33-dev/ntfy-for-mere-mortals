@@ -1,0 +1,6 @@
+$ ntfy publish http://127.0.0.1:8099/lab-alerts "Backup finished"
+{"id":"f8ufxERBPiyw","time":1792610695,"expires":1792653895,"event":"message","topic":"lab-alerts","message":"Backup finished"}
+[exit 0]
+$ ntfy publish --title "Nightly build" --priority high --tags white_check_mark,computer http://127.0.0.1:8099/lab-alerts "Build 412 passed"
+{"id":"KhAj9FdJuImx","time":1792610695,"expires":1792653895,"event":"message","topic":"lab-alerts","title":"Nightly build","message":"Build 412 passed","priority":4,"tags":["white_check_mark","computer"]}
+[exit 0]

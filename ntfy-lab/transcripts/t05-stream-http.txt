@@ -1,0 +1,9 @@
+$ curl -sN http://127.0.0.1:8099/lab-alerts/json   (held open; a publish happens in another shell)
+{"id":"VYHiYeIO8gpK","time":1792610760,"event":"open","topic":"lab-alerts"}
+{"id":"vBdhKjVjH6ZM","time":1792610761,"expires":1792653961,"event":"message","topic":"lab-alerts","message":"A message for the HTTP stream"}
+$ curl -sN http://127.0.0.1:8099/lab-alerts/sse   (held open; a publish happens in another shell)
+event: open
+data: {"id":"fJufzZWCHRKw","time":1792610742,"event":"open","topic":"lab-alerts"}
+
+data: {"id":"YZZ5SQjpqd2i","time":1792610743,"expires":1792653943,"event":"message","topic":"lab-alerts","message":"A message for the SSE stream"}
+

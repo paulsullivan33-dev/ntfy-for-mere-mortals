@@ -1,0 +1,4 @@
+$ ntfy subscribe http://127.0.0.1:8099/lab-alerts   (running, then a publish from another shell)
+$ curl -s -d "A message for the live subscriber" http://127.0.0.1:8099/lab-alerts
+--- what the subscriber printed ---
+{"id":"KOGXodj8Oxri","time":1792610733,"expires":1792653933,"event":"message","topic":"lab-alerts","message":"A message for the live subscriber"}

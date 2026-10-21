@@ -1,0 +1,18 @@
+$ curl -s -w "\nHTTP %{http_code}\n" -d "Anyone there?" http://127.0.0.1:8099/lab-alerts
+{"code":40301,"http":403,"error":"forbidden","link":"https://ntfy.sh/docs/publish/#authentication"}
+
+HTTP 403
+$ curl -s -w "\nHTTP %{http_code}\n" -u alice:alice-lab-pass -d "Private backup finished" http://127.0.0.1:8099/lab-private
+{"id":"8m7OCDtUaLod","time":1792611170,"expires":1792654370,"event":"message","topic":"lab-private","message":"Private backup finished"}
+
+HTTP 200
+$ curl -s -w "\nHTTP %{http_code}\n" -u alice:wrong-password -d "Private backup finished" http://127.0.0.1:8099/lab-private
+{"code":40101,"http":401,"error":"unauthorized","link":"https://ntfy.sh/docs/publish/#authentication"}
+
+HTTP 401
+$ curl -s -w "\nHTTP %{http_code}\n" -u bob:bob-lab-pass -d "Bob trying to publish" http://127.0.0.1:8099/lab-private
+{"code":40301,"http":403,"error":"forbidden","link":"https://ntfy.sh/docs/publish/#authentication"}
+
+HTTP 403
+$ curl -s -u bob:bob-lab-pass "http://127.0.0.1:8099/lab-private/json?poll=1"
+{"id":"8m7OCDtUaLod","time":1792611170,"expires":1792654370,"event":"message","topic":"lab-private","message":"Private backup finished"}

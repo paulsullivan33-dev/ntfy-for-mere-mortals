@@ -1,0 +1,31 @@
+$ export NTFY_CONFIG_FILE=/home/hatch/workspace/ntfy-build/server.yml   (so the user/access commands find the lab auth database)
+$ NTFY_PASSWORD=alice-lab-pass ntfy user add alice
+user alice added with role user
+$ NTFY_PASSWORD=bob-lab-pass ntfy user add bob
+user bob added with role user
+$ ntfy user list
+user alice (role: user, tier: none)
+- no topic-specific permissions
+user bob (role: user, tier: none)
+- no topic-specific permissions
+user * (role: anonymous, tier: none)
+- no topic-specific permissions
+- read-write access to all (other) topics (server config)
+$ ntfy access alice lab-private read-write
+granted read-write access to topic lab-private
+
+user alice (role: user, tier: none)
+- read-write access to topic lab-private
+$ ntfy access bob lab-private read-only
+granted read-only access to topic lab-private
+
+user bob (role: user, tier: none)
+- read-only access to topic lab-private
+$ ntfy access
+user alice (role: user, tier: none)
+- read-write access to topic lab-private
+user bob (role: user, tier: none)
+- read-only access to topic lab-private
+user * (role: anonymous, tier: none)
+- no topic-specific permissions
+- read-write access to all (other) topics (server config)

@@ -1,0 +1,10 @@
+$ wc -c body-4095.txt body-4096.txt
+4095 body-4095.txt
+4096 body-4096.txt
+8191 total
+$ curl -s -d @body-4095.txt http://127.0.0.1:8099/lab-alerts | jq -c "{event, message_length: (.message | length), has_attachment: has(\"attachment\")}"
+{"event":"message","message_length":4095,"has_attachment":false}
+$ curl -s -d @body-4096.txt http://127.0.0.1:8099/lab-alerts
+{"id":"KL0lLBdPhorY","time":1792611040,"expires":1792654240,"event":"message","topic":"lab-alerts","message":"You received a file: attachment.txt","attachment":{"name":"attachment.txt","type":"text/plain; charset=utf-8","size":4096,"expires":1792621840,"url":"http://127.0.0.1:8099/file/KL0lLBdPhorY.txt"}}
+$ curl -s -d "" "http://127.0.0.1:8099/lab-alerts?message=<a 65536-character message>" | jq -c "{event, message_length: (.message | length), has_attachment: has(\"attachment\")}"
+{"event":"message","message_length":65536,"has_attachment":false}

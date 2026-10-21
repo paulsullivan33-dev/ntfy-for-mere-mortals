@@ -1,0 +1,12 @@
+$ ntfy --config server.yml user add alice
+Incorrect Usage: flag provided but not defined: -config
+
+NAME:
+   ntfy - Simple pub-sub notification service
+... (the full usage text follows; trimmed)
+flag provided but not defined: -config
+
+[In ntfy 2.x, --config is not a global flag.
+The user/access commands take it themselves,
+or find the config through NTFY_CONFIG_FILE —
+see chapter 8.]

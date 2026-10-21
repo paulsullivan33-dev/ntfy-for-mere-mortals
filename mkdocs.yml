@@ -1,0 +1,24 @@
+site_name: ntfy for Mere Mortals
+site_description: Plain-language push notifications with ntfy. Publishing and subscribing over plain HTTP, titles, priorities and tags, the server cache and catching up, delayed delivery, attachments, running your own server, and locking it down with users and access control, practised against a local lab server.
+site_url: https://paulsullivan33-dev.github.io/ntfy-for-mere-mortals/
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What ntfy Is: what-ntfy-is.md
+  - Publishing: publishing.md
+  - Message Anatomy: message-anatomy.md
+  - Subscribing: subscribing.md
+  - Catching Up: catching-up.md
+  - Delays and Attachments: delays-and-attachments.md
+  - Running Your Own Server: running-your-own-server.md
+  - Users and Access: users-and-access.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md
