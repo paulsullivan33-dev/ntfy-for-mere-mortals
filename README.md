@@ -110,3 +110,19 @@ with any trim declared next to them.
 cheat-sheet; `ntfy-lab/transcripts/`
 keeps the captures the chapters quote
 from.
+
+---
+
+## Part of the series
+
+This guide is one of the [For Mere Mortals](https://paulsullivan33-dev.github.io/mere-mortals/) guides: plain-language guides to the tools programmers and makers use.
+
+Related guides:
+
+- [Prometheus and Grafana for Mere Mortals](https://paulsullivan33-dev.github.io/prometheus-and-grafana-for-mere-mortals/)
+- [cron for Mere Mortals](https://paulsullivan33-dev.github.io/cron-for-mere-mortals/)
+- [Home Assistant for Mere Mortals](https://paulsullivan33-dev.github.io/home-assistant-for-mere-mortals/)
+
+## License
+
+The writing in this guide is licensed under [CC BY 4.0](https://github.com/paulsullivan33-dev/ntfy-for-mere-mortals/blob/main/LICENSE). Code examples and lab scripts are licensed under the [MIT License](https://github.com/paulsullivan33-dev/ntfy-for-mere-mortals/blob/main/LICENSE-CODE).

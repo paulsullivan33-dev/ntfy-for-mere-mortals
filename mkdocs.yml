@@ -1,6 +1,7 @@
 site_name: ntfy for Mere Mortals
 site_description: Plain-language push notifications with ntfy. Publishing and subscribing over plain HTTP, titles, priorities and tags, the server cache and catching up, delayed delivery, attachments, running your own server, and locking it down with users and access control, practised against a local lab server.
 site_url: https://paulsullivan33-dev.github.io/ntfy-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
 
 # Guides live at the repo root (nice for GitHub browsing).
 # The deploy workflow copies them into docs/ before building.
